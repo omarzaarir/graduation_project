@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project/chatscreen.dart';
+import 'package:random_avatar/random_avatar.dart';
 
 class MyMessaging extends StatefulWidget {
   const MyMessaging({super.key});
@@ -8,8 +10,6 @@ class MyMessaging extends StatefulWidget {
 }
 
 class _MyMessagingState extends State<MyMessaging> {
-  Color co = Colors.white;
-  Color xo = const Color.fromARGB(255, 168, 168, 168);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +20,7 @@ class _MyMessagingState extends State<MyMessaging> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_sharp,
             color: Colors.white,
           ),
@@ -28,7 +28,7 @@ class _MyMessagingState extends State<MyMessaging> {
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Container(
+            child: SizedBox(
               height: 30,
               child: FloatingActionButton.extended(
                 heroTag: "new conversation",
@@ -46,73 +46,36 @@ class _MyMessagingState extends State<MyMessaging> {
       body: Stack(
         children: [
           ListView.builder(
-            padding: EdgeInsets.only(top: 50),
+            padding: const EdgeInsets.only(top: 50),
             controller: _scrollController,
             itemCount: messageList.length + 1,
             itemBuilder: (context, index) {
               if (index < messageList.length) {
                 return ListTile(
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const Chatscreen(),
+                    ),
+                  ),
                   leading: SizedBox(
                     height: 60,
                     width: 60,
-                    child: CircleAvatar(),
+                    child: RandomAvatar(messageList[index]),
                   ),
                   title: Text(messageList[index]),
-                  subtitle: Text("..."),
+                  subtitle: const Text("helo"),
                 );
               } else {
-                return Container(
+                return const SizedBox(
                     height: 1,
                     child: CircularProgressIndicator(
-                      color: const Color.fromARGB(255, 36, 161, 145),
+                      color: Color.fromARGB(255, 36, 161, 145),
                     ));
               }
             },
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Expanded(
-                child: Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: const Color.fromARGB(255, 168, 168, 168),
-                    ),
-                    color: co,
-                  ),
-                  child: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        co = const Color.fromARGB(255, 168, 168, 168);
-                        xo = Colors.white;
-                      });
-                    },
-                    icon: const Text("communitys"),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: const Color.fromARGB(255, 168, 168, 168),
-                    ),
-                    color: xo,
-                  ),
-                  child: IconButton(
-                    style: const ButtonStyle(),
-                    onPressed: () {
-                      setState(() {
-                        co = Colors.white;
-                        xo = const Color.fromARGB(255, 168, 168, 168);
-                      });
-                    },
-                    icon: const Text("events"),
-                  ),
-                ),
-              ),
-            ],
-          ),
+          const ConverType(),
         ],
       ),
     );
@@ -120,14 +83,12 @@ class _MyMessagingState extends State<MyMessaging> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _scrollController.addListener(_getmore);
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     _scrollController.dispose();
     super.dispose();
   }
@@ -137,23 +98,20 @@ class _MyMessagingState extends State<MyMessaging> {
             _scrollController.position.maxScrollExtent &&
         !isloading) {
       isloading = true;
-      // final timer = Duration(seconds: 5);
-      await Future.delayed(Duration(seconds: 5));
-      // timer;
-
+      await Future.delayed(const Duration(seconds: 1));
       messageList.addAll([
-        "omar basem1010",
-        "zaarir ahmad10101",
-        "Skyward Symphony10101",
-        "Whispered Wilds10101",
-        "Clockwork Cavern0101",
-        "Pixelated Pantheon10101",
-        "Neon Nebula10101",
-        "Ember Isles10101",
-        "Dragonkin Dynasty10101",
-        "Starfall Spire10101",
-        "Starfall Spire1",
-        "Dragonkin Dynasty2"
+        "omar basem",
+        "saly B",
+        "Skyward V",
+        "Whispered ",
+        "Clockwork Cavern",
+        "Pixelated Pantheon",
+        "Neon Nebula",
+        "Ember Isles",
+        "Dragonkin Dynasty",
+        "Starfall Spire",
+        "Starfall B",
+        "Dragonkin D"
       ]);
 
       mounted ? setState(() {}) : ();
@@ -162,19 +120,112 @@ class _MyMessagingState extends State<MyMessaging> {
   }
 
   bool isloading = false;
-  ScrollController _scrollController = ScrollController();
+  final ScrollController _scrollController = ScrollController();
   List<String> messageList = [
     "omar basem1010",
-    "zaarir ahmad10101",
-    "Skyward Symphony10101",
-    "Whispered Wilds10101",
-    "Clockwork Cavern0101",
-    "Pixelated Pantheon10101",
-    "Neon Nebula10101",
-    "Ember Isles10101",
-    "Dragonkin Dynasty10101",
-    "Starfall Spire10101",
-    "Starfall Spire1",
-    "Dragonkin Dynasty2"
+    "zaarir G",
+    "Symphony M",
+    "Wilds C",
+    "Cavern I",
+    "Pantheon O",
+    "Nebula Z",
+    "Isles Q",
+    "Dynasty H",
+    "Spire P",
+    "Spire W",
+    "Dynasty C B"
   ];
+}
+
+class ConverType extends StatefulWidget {
+  const ConverType({super.key});
+
+  @override
+  State<ConverType> createState() => _ConverTypeState();
+}
+
+class _ConverTypeState extends State<ConverType> {
+  Color co = Colors.white;
+  Color xo = const Color.fromARGB(255, 168, 168, 168);
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        border: Border(bottom: BorderSide(color: Colors.black)),
+      ),
+      padding: const EdgeInsets.all(5),
+      // margin:const EdgeInsets.all(5),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          IconButton(
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  shape:const RoundedRectangleBorder(
+                    side: BorderSide(color: Colors.black),
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(16),
+                        topRight: Radius.circular(16)),
+                  ),
+                  backgroundColor: Colors.lightBlue[100],
+                  duration: const Duration(seconds: 10),
+                  content: const Text(
+                    "this is for quicke chats, is not substitute popular chat applications, and this will be stored on your phone only!",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                ),
+              );
+            },
+            icon: Icon(
+              Icons.lightbulb_circle_outlined,
+              color: Colors.red[900],
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: const Color.fromARGB(255, 168, 168, 168),
+              ),
+              color: co,
+              borderRadius: BorderRadius.circular(50),
+            ),
+            child: InkWell(
+              onTap: () {
+                setState(() {
+                  co = const Color.fromARGB(255, 168, 168, 168);
+                  xo = Colors.white;
+                });
+              },
+              child: const Text("communitys"),
+            ),
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: const Color.fromARGB(255, 168, 168, 168),
+              ),
+              color: xo,
+              borderRadius: BorderRadius.circular(50),
+            ),
+            child: InkWell(
+              onTap: () {
+                setState(() {
+                  co = Colors.white;
+                  xo = const Color.fromARGB(255, 168, 168, 168);
+                });
+              },
+              child: const Text("events"),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }

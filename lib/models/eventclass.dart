@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import 'package:graduation_project/sharing%20widget/activity.dart';
 
 class EventClass {
   String title;
@@ -26,7 +27,20 @@ class EventClass {
     this.createrid,
   );
 
-
+  factory EventClass.fromjsom(dynamic json) {
+    return EventClass(
+        json['title'],
+        json['description'],
+        json['start_datetime'],
+        json['location'],
+        json['interests'],
+        [],
+        json['current_volunteers'],
+        [],
+        json['required_voulnteers'],
+        json['event_id'],
+        json['creator_id']);
+  }
 }
 
 class ActivityClass extends EventClass {
@@ -50,7 +64,6 @@ class ActivityClass extends EventClass {
     this.communityID,
     this.activityId,
   );
-
 }
 
 class PostClass extends EventClass {
@@ -72,3 +85,11 @@ class PostClass extends EventClass {
   );
 }
 
+List<EventClass> activityscc(List<dynamic> body) {
+  List<EventClass> e = [];
+  print("object");
+  for (var element in body) {
+    e.add(EventClass.fromjsom(element));
+  }
+  return e;
+}

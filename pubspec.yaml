@@ -40,6 +40,12 @@ dependencies:
   random_avatar: any
   shimmer: ^3.0.0
   http: ^1.1.0
+  image_picker: ^1.1.1
+  firebase_core: ^2.31.0
+  firebase_auth: ^4.19.5
+  shared_preferences: ^2.2.3
+  url_launcher: ^6.2.6
+  
   # calendar_view: ^1.1.0
  
 

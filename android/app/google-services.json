@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "590473724301",
+    "project_id": "gohelp-6f9ef",
+    "storage_bucket": "gohelp-6f9ef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:590473724301:android:b75e4d555d83a87b307dc4",
+        "android_client_info": {
+          "package_name": "com.example.graduation_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnshlSO6yftsB_GhyYffSs4Iq21g6y-cg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -30,8 +30,6 @@ class LocalData {
   }
 }
 
-
-
 fillevent() {
   LocalData.events.addAll([
     PostClass("title", "body", DateTime.now(), "location2", [1, 2, 3, 4, 5, 6],
@@ -55,7 +53,16 @@ fillmychat() {
 
 fillmydata() {
   LocalData.mydata = MyDataClass(
-      "omar", "zaarir", "token", "hebron-alsamu`-omganim",const Placeholder(color: Colors.blueAccent,), "email@gmail.com", "my bio is deferint", 105);
+      "omar",
+      "zaarir",
+      "token",
+      "hebron-alsamu`-omganim",
+      const Placeholder(
+        color: Colors.blueAccent,
+      ),
+      "email@gmail.com",
+      "my bio is deferint",
+      105);
 }
 
 fillnotifications() {
